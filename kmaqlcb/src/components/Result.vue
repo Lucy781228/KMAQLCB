@@ -1,5 +1,5 @@
 <template>
-    <div v-if="rows.length === 0">
+    <div v-if="users.length == 0">
         <NcEmptyContent>
             <template #title>
                 <h1 class="empty-content__title">
@@ -332,7 +332,6 @@ export default {
     },
 
     mounted() {
-        console.log(this.show)
 
     },
 
@@ -343,9 +342,6 @@ export default {
 
         formatGender(value) {
             return value === 0 ? 'Nam' : 'Nữ';
-        },
-        convertDate(dateString) {
-            return dateString.split("/").reverse().join("-");
         },
 
         setData() {
@@ -360,7 +356,7 @@ export default {
 
         async getUsers() {
             try {
-                let response = await axios.get(generateUrl('apps/kmaqlcb/all_users'))
+                let response = await axios.get(generateUrl('apps/qlcb/all_users'))
                 let array = response.data.users
 
                 if (this.unitId) {
@@ -376,17 +372,14 @@ export default {
                 }
 
                 if (this.start) {
-                    let startDate = this.convertDate(this.start);
-                    array = array.filter(user => new Date(user.date_of_birth) >= new Date(startDate));
+                    array = array.filter(user => new Date(user.date_of_birth) >= new Date(this.start));
                 }
 
                 if (this.end) {
-                    let endDate = this.convertDate(this.end);
-                    array = array.filter(user => new Date(user.date_of_birth) <= new Date(endDate));
+                    array = array.filter(user => new Date(user.date_of_birth) <= new Date(this.end));
                 }
 
                 this.users = array;
-                console.log(this.users)
             } catch (e) {
                 console.error(e)
             }
@@ -394,21 +387,18 @@ export default {
 
         async getEducations() {
             try {
-                const response = await axios.get(generateUrl('apps/kmaqlcb/all_educations'))
+                const response = await axios.get(generateUrl('apps/qlcb/all_educations'))
                 let array = response.data.educations
 
                 if (this.start) {
-                    let startDate = this.convertDate(this.start);
-                    array = array.filter(user => new Date(user.start_date) >= new Date(startDate));
+                    array = array.filter(user => new Date(user.start_date) >= new Date(this.start));
                 }
 
                 if (this.end) {
-                    let endDate = this.convertDate(this.end);
-                    array = array.filter(user => new Date(user.end_date) <= new Date(endDate));
+                    array = array.filter(user => new Date(user.end_date) <= new Date(this.end));
                 }
 
                 this.users = array;
-                console.log(this.users)
             } catch (e) {
                 console.error(e)
             }
@@ -416,21 +406,18 @@ export default {
 
         async getBusinesses() {
             try {
-                const response = await axios.get(generateUrl('apps/kmaqlcb/all_businesses'))
+                const response = await axios.get(generateUrl('apps/qlcb/all_businesses'))
                 let array = response.data.businesses
 
                 if (this.start) {
-                    let startDate = this.convertDate(this.start);
-                    array = array.filter(user => new Date(user.start_date) >= new Date(startDate));
+                    array = array.filter(user => new Date(user.start_date) >= new Date(this.start));
                 }
 
                 if (this.end) {
-                    let endDate = this.convertDate(this.end);
-                    array = array.filter(user => new Date(user.end_date) <= new Date(endDate));
+                    array = array.filter(user => new Date(user.end_date) <= new Date(this.end));
                 }
 
                 this.users = array;
-                console.log(this.users)
             } catch (e) {
                 console.error(e)
             }
@@ -439,21 +426,18 @@ export default {
         async getBonuses() {
             try {
                 let type = this.selectedOption == 3 ? 1 :0
-                const response = await axios.get(generateUrl(`apps/kmaqlcb/all_bonuses+${type}`))
+                const response = await axios.get(generateUrl(`apps/qlcb/all_bonuses+${type}`))
                 let array = response.data.bonuses
 
                 if (this.start) {
-                    let startDate = this.convertDate(this.start);
-                    array = array.filter(user => new Date(user.time) >= new Date(startDate));
+                    array = array.filter(user => new Date(user.time) >= new Date(this.start));
                 }
 
                 if (this.end) {
-                    let endDate = this.convertDate(this.end);
-                    array = array.filter(user => new Date(user.time) <= new Date(endDate));
+                    array = array.filter(user => new Date(user.time) <= new Date(this.end));
                 }
 
                 this.users = array;
-                console.log(this.users)
             } catch (e) {
                 console.error(e)
             }

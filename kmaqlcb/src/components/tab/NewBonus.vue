@@ -112,7 +112,7 @@ export default {
     props: {
         bonusType: {
             type: Boolean,
-            default: true
+            required: true
         },
         modal: {
             type: Boolean,
@@ -181,11 +181,11 @@ export default {
         getTitle() {
             if (this.isEdit) {
                 if (this.bonusType) return 'CẬP NHẬT QUÁ TRÌNH KHEN THƯỞNG';
-                else 'CẬP NHẬT QUÁ TRÌNH KỶ LUẬT';
+                else return'CẬP NHẬT QUÁ TRÌNH KỶ LUẬT';
             }
             else {
                 if (this.bonusType) return 'THÊM QUÁ TRÌNH KHEN THƯỞNG';
-                else 'THÊM QUÁ TRÌNH KỶ LUẬT';
+                else return'THÊM QUÁ TRÌNH KỶ LUẬT';
             }
         },
         validation() {
@@ -242,7 +242,7 @@ export default {
 
         async createBonus() {
             try {
-                const response = await axios.post('/apps/kmaqlcb/create_bonus', {
+                const response = await axios.post('/apps/qlcb/create_bonus', {
                     time: this.mysqlDateFormatter(this.time),
                     number_decision: this.numberDecision,
                     form: this.form,
@@ -260,7 +260,7 @@ export default {
 
         async updateBonus() {
             try {
-                const response = await axios.put('/apps/kmaqlcb/update_bonus', {
+                const response = await axios.put('/apps/qlcb/update_bonus', {
                     time: this.mysqlDateFormatter(this.time),
                     number_decision: this.numberDecision,
                     form: this.form,

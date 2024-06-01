@@ -12,13 +12,13 @@
 
                 <div class="grid-item">
                     <label>Đơn vị</label>
-                    <Multiselect v-model="userSearch.unit_id" :options-list="formatUnits" type="unit"
+                    <Multiselect v-model="userSearch.unit_id" :options-list="formatUnits" type="unit" :id="userSearch.unit_id"
                         :allow-delete="false" />
                 </div>
 
                 <div class="grid-item">
                     <label>Chức vụ</label>
-                    <Multiselect v-model="userSearch.position_id" :options-list="formatPositions" type="position"
+                    <Multiselect v-model="userSearch.position_id" :options-list="formatPositions" type="position" :id="userSearch.position_id"
                         :allow-delete="false" />
                 </div>
 
@@ -171,7 +171,7 @@ export default {
 
         async getUnits() {
             try {
-                const response = await axios.get(generateUrl('apps/kmaqlcb/units'))
+                const response = await axios.get(generateUrl('apps/qlcb/units'))
                 this.units = response.data.units
             } catch (e) {
                 console.error(e)
@@ -180,7 +180,7 @@ export default {
 
         async getPositions() {
             try {
-                const response = await axios.get(generateUrl('apps/kmaqlcb/positions'))
+                const response = await axios.get(generateUrl('apps/qlcb/positions'))
                 this.positions = response.data.positions
             } catch (e) {
                 console.error(e)

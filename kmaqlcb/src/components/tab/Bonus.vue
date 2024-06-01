@@ -12,7 +12,7 @@
                 </NcButton>
             </template>
         </NcEmptyContent>
-        <NewBonus :modal="isAdd" :qlcb-uid="userId" @close="stopModal" :bonus-type:="bonusType"/>
+        <NewBonus :modal="isAdd" :qlcb-uid="userId" @close="stopModal" :bonus-type="bonusType"/>
     </div>
     <div v-else>
         <div class="table-actions">
@@ -57,10 +57,10 @@
                 </div>
             </div>
         </NcModal>
-        <NewBonus :modal="isAdd" :qlcb-uid="userId" @close="stopModal" :bonus-type:="bonusType"/>
+        <NewBonus :modal="isAdd" :qlcb-uid="userId" @close="stopModal" :bonus-type="bonusType"/>
         <NewBonus :modal="isEdit" :qlcb-uid="userId" @close="stopModal" :time="time" :reason="reason"
             :department-decision="departmentDecision" :number-decision="numberDecision" :form="form" :is-edit="true"
-            :bonus-id="bonusId" :bonus-type:="bonusType" />
+            :bonus-id="bonusId" :bonus-type="bonusType" />
     </div>
 </template>
 
@@ -202,9 +202,8 @@ export default {
         async getBonuses() {
             try {
                 let value = this.bonusType ? 1 : 0
-                const response = await axios.get(generateUrl(`/apps/kmaqlcb/bonuses/${this.userId}/${value}`));
+                const response = await axios.get(generateUrl(`/apps/qlcb/bonuses/${this.userId}/${value}`));
                 this.bonuses = response.data.bonuses
-                console.log(this.bonuses.length)
 
             } catch (e) {
                 console.error(e)
@@ -214,7 +213,7 @@ export default {
         async onDeleteBonuses() {
             try {
                 const deletePromises = this.selectedBonuses.map(bonus =>
-                    axios.delete(generateUrl(`apps/kmaqlcb/delete_bonus/${bonus.bonus_id}`))
+                    axios.delete(generateUrl(`apps/qlcb/delete_bonus/${bonus.bonus_id}`))
                 );
                 await Promise.all(deletePromises);
                 await this.getBonuses();
@@ -229,7 +228,6 @@ export default {
             if (selectedRows.length)
                 this.selectedBonuses = selectedRows
             else this.selectedBonuses = null
-            console.log(selectedRows);
         },
     }
 };

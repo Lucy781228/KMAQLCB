@@ -11,10 +11,10 @@
                 <Education :user-id="this.user_id"/>
             </NcAppSidebarTab>
             <NcAppSidebarTab name="Quá Trình Khen Thưởng" id="bonus" order="4">
-                <Bonus :bonus-type="true" :user-id="this.user_id"/>
+                <Bonus :user-id="user_id"/>
             </NcAppSidebarTab>
             <NcAppSidebarTab name="Quá Trình Kỷ Luật" id="discipline" order="5">
-                <Bonus :bonus-type="false" :user-id="this.user_id"/>
+                <Bonus :bonus-type="false" :user-id="user_id"/>
             </NcAppSidebarTab>
             <NcAppSidebarTab name="Thân Nhân" id="relation" order="6">
                 <Relation :user-id="this.user_id"/>
