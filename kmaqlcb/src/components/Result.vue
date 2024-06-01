@@ -356,7 +356,7 @@ export default {
 
         async getUsers() {
             try {
-                let response = await axios.get(generateUrl('apps/qlcb/all_users'))
+                let response = await axios.get(generateUrl('apps/kmaqlcb/all_users'))
                 let array = response.data.users
 
                 if (this.unitId) {
@@ -387,7 +387,7 @@ export default {
 
         async getEducations() {
             try {
-                const response = await axios.get(generateUrl('apps/qlcb/all_educations'))
+                const response = await axios.get(generateUrl('apps/kmaqlcb/all_educations'))
                 let array = response.data.educations
 
                 if (this.start) {
@@ -406,7 +406,7 @@ export default {
 
         async getBusinesses() {
             try {
-                const response = await axios.get(generateUrl('apps/qlcb/all_businesses'))
+                const response = await axios.get(generateUrl('apps/kmaqlcb/all_businesses'))
                 let array = response.data.businesses
 
                 if (this.start) {
@@ -426,7 +426,7 @@ export default {
         async getBonuses() {
             try {
                 let type = this.selectedOption == 3 ? 1 :0
-                const response = await axios.get(generateUrl(`apps/qlcb/all_bonuses+${type}`))
+                const response = await axios.get(generateUrl(`apps/kmaqlcb/all_bonuses+${type}`))
                 let array = response.data.bonuses
 
                 if (this.start) {

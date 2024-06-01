@@ -194,7 +194,7 @@ export default {
 
         deleteBonuses() {
             if (!this.selectedBonuses)
-                showError(t('qlcb', 'Không có dòng nào được chọn'));
+                showError(t('kmaqlcb', 'Không có dòng nào được chọn'));
             else this.modal = true
 
         },
@@ -202,7 +202,7 @@ export default {
         async getBonuses() {
             try {
                 let value = this.bonusType ? 1 : 0
-                const response = await axios.get(generateUrl(`/apps/qlcb/bonuses/${this.userId}/${value}`));
+                const response = await axios.get(generateUrl(`/apps/kmaqlcb/bonuses/${this.userId}/${value}`));
                 this.bonuses = response.data.bonuses
 
             } catch (e) {
@@ -213,11 +213,11 @@ export default {
         async onDeleteBonuses() {
             try {
                 const deletePromises = this.selectedBonuses.map(bonus =>
-                    axios.delete(generateUrl(`apps/qlcb/delete_bonus/${bonus.bonus_id}`))
+                    axios.delete(generateUrl(`apps/kmaqlcb/delete_bonus/${bonus.bonus_id}`))
                 );
                 await Promise.all(deletePromises);
                 await this.getBonuses();
-                showSuccess(t('qlcb', 'Xóa thành công'));
+                showSuccess(t('kmaqlcb', 'Xóa thành công'));
                 this.modal = false
             } catch (e) {
                 console.error('Error deleting selected bonuses:', e);

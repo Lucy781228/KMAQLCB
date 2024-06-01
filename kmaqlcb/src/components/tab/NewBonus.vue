@@ -242,7 +242,7 @@ export default {
 
         async createBonus() {
             try {
-                const response = await axios.post('/apps/qlcb/create_bonus', {
+                const response = await axios.post('/apps/kmaqlcb/create_bonus', {
                     time: this.mysqlDateFormatter(this.time),
                     number_decision: this.numberDecision,
                     form: this.form,
@@ -251,7 +251,7 @@ export default {
                     qlcb_uid: this.qlcbUid,
                     type: this.bonusType ? 1 : 0
                 });
-                showSuccess(t('qlcb', 'Thêm thành công'));
+                showSuccess(t('kmaqlcb', 'Thêm thành công'));
                 this.closeModal()
             } catch (e) {
                 console.error(e)
@@ -260,7 +260,7 @@ export default {
 
         async updateBonus() {
             try {
-                const response = await axios.put('/apps/qlcb/update_bonus', {
+                const response = await axios.put('/apps/kmaqlcb/update_bonus', {
                     time: this.mysqlDateFormatter(this.time),
                     number_decision: this.numberDecision,
                     form: this.form,
@@ -270,7 +270,7 @@ export default {
                     type: this.bonusType ? 1 : 0,
                     bonus_id: this.bonusId
                 });
-                showSuccess(t('qlcb', 'Cập nhật thành công'));
+                showSuccess(t('kmaqlcb', 'Cập nhật thành công'));
                 this.closeModal()
             } catch (e) {
                 console.error(e)
