@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <!--
+    SPDX-FileCopyrightText: Lucy <ct040407@actvn.edu.vn>
+    SPDX-License-Identifier: CC0-1.0
+    -->
+    <id>qlcb</id>
+    <name>Q L C B</name>
+    <summary>ct040407@actvn.edu.vn</summary>
+    <description><![CDATA[ct040407@actvn.edu.vn]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="ct040407@actvn.edu.vn" >Lucy</author>
+    <namespace>QLCB</namespace>
+    <category>office</category>
+    <bugs>https://apps.nextcloud.com/developer/apps/generate</bugs>
+    <dependencies>
+        <nextcloud min-version="27" max-version="27"/>
+    </dependencies>
+    <navigations>
+        <navigation>
+            <name>Quản Lý Cán Bộ</name>
+            <route>qlcb.page.index</route>
+        </navigation>
+    </navigations>
+</info>
